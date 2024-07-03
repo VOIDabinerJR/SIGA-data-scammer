@@ -10,10 +10,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Configuração do banco de dados
 const connection = mysql.createConnection({
-    host: 'sistema.cziy4480u3ys.us-east-1.rds.amazonaws.com',
-    user: 'admin',
-    password: 'Junior.@12', // Substitua pela sua senha do MySQL
-    database: 'nome_do_banco' // Substitua pelo nome do seu banco de dados
+    host: 'viaduct.proxy.rlwy.net',
+    user: 'root',
+    password: 'WuZcgSAqybYGYxdeyXsbgwDjHTfZqmvX', // Substitua pela sua senha do MySQL
+    database: 'nome_do_banco', // Substitua pelo nome do seu banco de dados
+    port: 22088
 });
 
 // Conectando ao banco de dados
