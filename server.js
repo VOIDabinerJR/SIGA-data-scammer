@@ -10,9 +10,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Configuração do banco de dados
 const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '0000', // Substitua pela sua senha do MySQL
+    host: 'sistema.cziy4480u3ys.us-east-1.rds.amazonaws.com',
+    user: 'admin',
+    password: 'Junior.@12', // Substitua pela sua senha do MySQL
     database: 'nome_do_banco' // Substitua pelo nome do seu banco de dados
 });
 
