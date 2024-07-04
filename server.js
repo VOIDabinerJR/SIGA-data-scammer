@@ -9,19 +9,17 @@ const port = 3000;
 const publicDirectory = path.join(__dirname)
 app.use(express.static(publicDirectory))
 
-// Configuração do body-parser
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Configuração do banco de dados
 const connection = mysql.createConnection({
     host: 'viaduct.proxy.rlwy.net',
     user: 'root',
-    password: 'WuZcgSAqybYGYxdeyXsbgwDjHTfZqmvX', // Substitua pela sua senha do MySQL
-    database: 'nome_do_banco', // Substitua pelo nome do seu banco de dados
+    password: 'WuZcgSAqybYGYxdeyXsbgwDjHTfZqmvX',
+    database: 'nome_do_banco', 
     port: 22088
 });
 
-// Conectando ao banco de dados
+
 connection.connect((err) => {
     if (err) {
         console.error('Erro ao conectar ao banco de dados: ' + err.stack);
@@ -30,17 +28,17 @@ connection.connect((err) => {
     console.log('Conectado ao banco de dados como id ' + connection.threadId);
 });
 
-// Rota para servir o arquivo HTML
+
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
 
-// Rota para processar o formulário
+
 app.post('/submit', (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
 
-    // Inserindo os dados no banco de dados
+ 
     const query = 'INSERT INTO usuarios (email, senha) VALUES (?, ?)';
     connection.query(query, [email, password], (err, results) => {
         if (err) {
@@ -49,11 +47,10 @@ app.post('/submit', (req, res) => {
             return;
         }
         console.log('Dados inseridos com sucesso: ', results);
-        res.send('Dados enviados com sucesso');
+        res.sendFile(__dirname + '/index.html');
     });
 });
 
-// Rota para listar todos os usuários
 app.get('/usuarios', (req, res) => {
     const query = 'SELECT * FROM usuarios';
     connection.query(query, (err, results) => {
@@ -75,7 +72,7 @@ app.get('/usuarios', (req, res) => {
     });
 });
 
-// Iniciando o servidor
+
 app.listen(port, () => {
     console.log(`Servidor rodando em http://localhost:${port}`);
 });
